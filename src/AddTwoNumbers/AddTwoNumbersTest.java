@@ -1,67 +1,42 @@
 package AddTwoNumbers;
 
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddTwoNumbersTest {
-    AddTwoNumbers obj;
+    Solution obj;
 
-    @Before
+    @BeforeEach
     public void initialize() {
-        obj = new AddTwoNumbers();
-    }
-
-    @Test
-    public void testReverseList() {
-        LinkedList list1 = new LinkedList();
-        list1.add(1);
-        list1.add(2);
-        list1.add(3);
-        LinkedList listResult = obj.reverseList(list1);
-        LinkedList listExpected = new LinkedList();
-        list1.add(3);
-        list1.add(2);
-        list1.add(1);
-        assertEquals(listExpected,listResult);
+        obj = new Solution();
     }
 
     @Test
     public void testAddTwoLists() {
-        LinkedList list1 = new LinkedList();
-        list1.add(1);
-        list1.add(2);
-        list1.add(3);
-        LinkedList list2 = new LinkedList();
-        list1.add(4);
-        list1.add(5);
-        list1.add(6);
-        LinkedList listResult = obj.addTwoLists(list1, list2);
-        LinkedList listExpected = new LinkedList();
-        listExpected.add(5);
-        listExpected.add(7);
-        listExpected.add(9);
-        assertEquals(listExpected,listResult);
-    }
+        ListNode l1 = new ListNode(3);
+        ListNode l1n = new ListNode(4);
+        ListNode l1nn = new ListNode(2);
+        l1.next = l1n;
+        l1n.next = l1nn;
 
-    @Test
-    public void testRemainerAdding() {
-        LinkedList list1 = new LinkedList();
-        list1.add(1);
-        list1.add(2);
-        list1.add(4);
-        LinkedList list2 = new LinkedList();
-        list1.add(4);
-        list1.add(5);
-        list1.add(6);
-        LinkedList listResult = obj.addTwoLists(list1, list2);
-        LinkedList listExpected = new LinkedList();
-        listExpected.add(5);
-        listExpected.add(8);
-        listExpected.add(0);
-        assertEquals(listExpected,listResult);
+        ListNode l2 = new ListNode(4);
+        ListNode l2n = new ListNode(6);
+        ListNode l2nn = new ListNode(5);
+        l2.next = l2n;
+        l2n.next = l2nn;
+        ListNode listResult = obj.addTwoNumbers(l1, l2);
+
+        ListNode listExpected = new ListNode(7);
+        ListNode l3n = new ListNode(0);
+        ListNode l3nn = new ListNode(8);
+        listExpected.next = l3n;
+        l3n.next = l3nn;
+        assertEquals(listResult.val,listExpected.val);
+        assertEquals(listResult.next.val,listExpected.next.val);
+        assertEquals(listResult.next.next.val,listExpected.next.next.val);
     }
 }
